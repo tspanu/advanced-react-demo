@@ -1,0 +1,31 @@
+{
+  "name": "expensify",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Travis Spanu",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "normalize.css": "^8.0.0",
+    "parcel-bundler": "^1.10.3",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-modal": "^3.6.1",
+    "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "sass": "^1.14.3",
+    "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "dev": "parcel src/index.html"
+  },
+  "keywords": [],
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@types/react": "^16.4.18",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
