@@ -56472,80 +56472,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 // eslint-disable-next-line import/no-unresolved
 module.exports = require('./lib');
 
-},{"./lib":"../node_modules/react-dates/lib/index.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/react-dates/lib/css/_datepicker.css":[function(require,module,exports) {
-
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/ExpenseForm.js":[function(require,module,exports) {
+},{"./lib":"../node_modules/react-dates/lib/index.js"}],"components/ExpenseForm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -56560,8 +56487,6 @@ var _moment = _interopRequireDefault(require("moment"));
 require("react-dates/initialize");
 
 var _reactDates = require("react-dates");
-
-require("react-dates/lib/css/_datepicker.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56728,7 +56653,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = ExpenseForm;
-},{"react":"../node_modules/react/index.js","moment":"../node_modules/moment/moment.js","react-dates/initialize":"../node_modules/react-dates/initialize.js","react-dates":"../node_modules/react-dates/index.js","react-dates/lib/css/_datepicker.css":"../node_modules/react-dates/lib/css/_datepicker.css"}],"../node_modules/uuid/lib/rng-browser.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","moment":"../node_modules/moment/moment.js","react-dates/initialize":"../node_modules/react-dates/initialize.js","react-dates":"../node_modules/react-dates/index.js"}],"../node_modules/uuid/lib/rng-browser.js":[function(require,module,exports) {
 // Unique ID creation requires a high quality random # generator.  In the
 // browser this is a little complicated due to unknown quality of Math.random()
 // and inconsistent support for the `crypto` API.  We do the best we can via
@@ -57145,7 +57070,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.ExpenseList = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -57160,12 +57085,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var ExpenseList = function ExpenseList(props) {
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Expense List"), props.expenses.map(function (expense) {
+  return _react.default.createElement("div", null, props.expenses.length === 0 ? _react.default.createElement("p", null, "No expenses") : props.expenses.map(function (expense) {
     return _react.default.createElement(_ExpenseListItem.default, _extends({
       key: expense.id
     }, expense));
   }));
 };
+
+exports.ExpenseList = ExpenseList;
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
@@ -57409,10 +57336,7 @@ var Header = function Header() {
   }, "Dashboard"), _react.default.createElement(_reactRouterDom.NavLink, {
     to: "/create",
     activeClassName: "is-active"
-  }, "Add Expense"), _react.default.createElement(_reactRouterDom.NavLink, {
-    to: "/help",
-    activeClassName: "is-active"
-  }, "Help"));
+  }, "Add Expense"));
 };
 
 var _default = Header;
@@ -57650,7 +57574,74 @@ var _default = function _default() {
 };
 
 exports.default = _default;
-},{"redux":"../node_modules/redux/es/redux.js","../reducers/expenses":"reducers/expenses.js","../reducers/filters":"reducers/filters.js"}],"../node_modules/normalize.css/normalize.css":[function(require,module,exports) {
+},{"redux":"../node_modules/redux/es/redux.js","../reducers/expenses":"reducers/expenses.js","../reducers/filters":"reducers/filters.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/normalize.css/normalize.css":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
@@ -57661,6 +57652,12 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/react-dates/lib/css/_datepicker.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -57679,6 +57676,8 @@ var _expenses = require("./actions/expenses");
 require("normalize.css/normalize.css");
 
 require("./styles/index.scss");
+
+require("react-dates/lib/css/_datepicker.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57704,7 +57703,7 @@ var jsx = _react.default.createElement(_reactRedux.Provider, {
 }, _react.default.createElement(_Router.default, null));
 
 _reactDom.default.render(jsx, document.getElementById('app'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-redux":"../node_modules/react-redux/es/index.js","./routers/Router":"routers/Router.js","./store/configureStore":"store/configureStore.js","./actions/expenses":"actions/expenses.js","normalize.css/normalize.css":"../node_modules/normalize.css/normalize.css","./styles/index.scss":"styles/index.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-redux":"../node_modules/react-redux/es/index.js","./routers/Router":"routers/Router.js","./store/configureStore":"store/configureStore.js","./actions/expenses":"actions/expenses.js","normalize.css/normalize.css":"../node_modules/normalize.css/normalize.css","./styles/index.scss":"styles/index.scss","react-dates/lib/css/_datepicker.css":"../node_modules/react-dates/lib/css/_datepicker.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -57731,7 +57730,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55193" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65135" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
