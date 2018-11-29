@@ -11,9 +11,9 @@ import moment from 'moment'
 
 const store = configureStore()
 
-store.dispatch(addExpense({ description: 'Water Bill', amount: 400, createdAt: moment().valueOf() }))
-store.dispatch(addExpense({ description: 'Gas Bill', amount: 100, createdAt: moment().add(7, 'days').valueOf() }))
-store.dispatch(addExpense({ description: 'Rent', amount: 1400, createdAt: moment().subtract(7, 'days').valueOf() }))
+store.dispatch(addExpense({ description: 'Water Bill', amount: 4000, createdAt: moment().valueOf() }))
+store.dispatch(addExpense({ description: 'Gas Bill', amount: 1000, createdAt: moment().add(7, 'days').valueOf() }))
+store.dispatch(addExpense({ description: 'Rent', amount: 78000, createdAt: moment().add(18, 'days').valueOf() }))
 
 const jsx = (
     <Provider store={store}>

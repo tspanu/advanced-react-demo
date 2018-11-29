@@ -4,8 +4,10 @@
     padding: $l-size 0;
 }
 
-.page-header__actions {
-    margin-top: $m-size;
+.page-header--justify {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .page-header__title{
