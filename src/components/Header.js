@@ -9,7 +9,6 @@ const Header = () => (
                 <Link className="header__title" to="/">
                     <h1>Expensify</h1>
                 </Link>
-                <button className="button button--link">Logout</button>
             </div>
         </div>
     </header>
