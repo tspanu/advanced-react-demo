@@ -13,6 +13,6 @@ Tools: React, Redux, React-Router, Babel, Parcel-Bundler, Jest, Enzyme.
 4. $ npm run test
 5. $ npm run dev
 
-### Screenshot
+### Demo
 
 ![Advanced-React-Demo](https://github.com/tspanu/advanced-react-demo/blob/master/src/images/expensify-demo.gif)
