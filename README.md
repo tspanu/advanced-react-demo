@@ -15,5 +15,4 @@ Tools: React, Redux, React-Router, Babel, Parcel-Bundler, Jest, Enzyme.
 
 ### Screenshot
 
-![Advanced-React-Image](https://github.com/tspanu/advanced-react-demo/blob/master/src/images/screen-shot.png)
-
+![Advanced-React-Demo](https://github.com/tspanu/advanced-react-demo/blob/master/src/images/expensify-demo.gif)
