@@ -4,8 +4,7 @@ Demo project from [The Complete React Web Developer Course (with Redux)](https:/
 
 ## Expensify
 
-Tools: React, Redux, React-Router, Babel, Parcel-Bundler, Jest, Enzyme, App Debugging, Production Deployment, Form Validation.
-
+Tools: React, Redux, React-Router, Babel, Parcel-Bundler, Jest, Enzyme.
 ### Getting started
 
 1. $ git clone https://<span></span>github.com/tspanu/advanced-react-demo.git
